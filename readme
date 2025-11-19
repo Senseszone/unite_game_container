@@ -1,0 +1,47 @@
+Specifikace kontejneru stručně a přesně, jako technický dokument pro iSenses komponenty.
+
+**Název komponenty**
+GameContainer4K
+
+**Účel**
+Standardizovaný rámec pro všechny hry v iSenses. Zajišťuje jednotný vzhled, rozměry, strukturu UI a bezpečný prostor, do kterého se vkládá samotný layout hry (grid, random pole, orientační layout, button pole…).
+
+**Rozměry**
+Celá scéna: 3840 × 2160 px (nativní 4K).
+Vnitřní herní pole: 3520 × 1840 px.
+Okraje: 160 px nahoře i dole.
+
+**Struktura**
+
+1. Horní okraj (prázdný pás 160 px).
+2. Horní lišta:
+   Zobrazení času (vlevo), názvu hry (střed), rezerva (vpravo).
+   Výška 160 px, šířka 3520 px.
+3. Herní plocha:
+   Rozměr 3520 × 1840 px.
+   Pozadí #0D2B55.
+   Border 8 px (Pantone 284 C).
+   Position: relative.
+   Sem se vkládá layout hry jako children.
+4. Dolní okraj 160 px.
+
+**Parametry komponenty**
+title: string — název hry.
+timeLeftSec: number — odpočet v sekundách.
+children: ReactNode nebo render-funkce. Vkládá layout hry.
+
+**Vlastnosti**
+Barvy laděné pro sportovní aplikaci.
+Position relative uvnitř herního pole umožňuje přesné umisťování tlačítek i gridů.
+Bez logiky chování. Kontejner řeší pouze UI.
+
+**Co kontejner garantuje**
+Stále stejné rozměry pro každou hru.
+Oddělení UI od logiky hry.
+Bezpečné a izolované prostředí pro layouty (10×10 grid, random layout, orientation, saccadic tasks).
+
+**Jak se používá**
+Obalí herní komponentu a do children vložíš grid nebo náhodné pozice.
+
+Případná rozšíření:
+Stavové indikátory, skóre, knoflík „Pause“, nebo přepnutí barevné palety podle módu WAIT / CATCH.
